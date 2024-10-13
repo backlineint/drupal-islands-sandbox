@@ -1,0 +1,12 @@
+{
+  "name": "islands",
+  "version": "1.0.0",
+  "description": "An implementation of islands architecture for Drupal",
+  "license": "GPL-2.0-or-later",
+  "scripts": {
+    "copy-lib": "cp node_modules/@11ty/is-land/is-land*.js js/lib/"
+  },
+  "dependencies": {
+    "@11ty/is-land": "^4.0.0"
+  }
+}
