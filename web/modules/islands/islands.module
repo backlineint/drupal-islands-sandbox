@@ -20,6 +20,7 @@ function islands_preprocess(&$variables) {
       $js_template = $path . '/' . $template . '.js';
       // If a matching js template exists, note it for the theme
       if (!file_exists(DRUPAL_ROOT . $js_template)) {
+        // TODO - Try making this an import map instead...
         $variables['js_template'] = '/' . $js_template;
       }
     }

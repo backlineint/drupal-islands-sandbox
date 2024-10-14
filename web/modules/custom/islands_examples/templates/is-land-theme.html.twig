@@ -1,24 +1,24 @@
-<is-land on:visible on:idle>
+<drupal-island on:visible on:idle>
   <vanilla-web-component>
     <p>Put your pre-JS fallback content in your web component.</p>
   </vanilla-web-component>
-</is-land>
+</drupal-island>
 
-<is-land on:visible on:idle>
+<drupal-island on:visible on:idle>
   <template data-island>
     <vanilla-web-component>
       <p>This component is post-JS.</p>
     </vanilla-web-component>
   </template>
-</is-land>
+</drupal-island>
 
-<is-land on:visible autoinit="preact" import="{{ js_template }}"></is-land>
+<drupal-island on:visible autoinit="preact" import="{{ js_template }}"></drupal-island>
 
 {# {{ dump(_context)}}
 {{ dump(base_path ~ directory )}} #}
 
 {# Desired api...
-<drupal-island on:visible autoinit="preact" import={{ resolve_template() }}>
+<drupal-island on:visible autoinit="preact" import="is-land-theme">
   <template data-island>
     {{ content.field_image}}
   </template>
