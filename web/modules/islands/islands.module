@@ -4,3 +4,24 @@
  * @file
  * Primary module hooks for Islands module.
  */
+
+function islands_preprocess(&$variables) {
+  // either theme_hook_suggestions or theme_hook_original can be used to get the theme hook.
+  // There are likely many other use cases we need to address here.
+
+  $theme_registry = \Drupal::service('theme.registry');
+  // Get all theme hook suggestions.
+  $suggestions = $theme_registry->get();
+
+  if (isset($variables['theme_hook_original'])) {
+    if (isset($suggestions[$variables['theme_hook_original']]['path'])) {
+      $path = $suggestions[$variables['theme_hook_original']]['path'];
+      $template = $suggestions[$variables['theme_hook_original']]['template'];
+      $js_template = $path . '/' . $template . '.js';
+      // If a matching js template exists, note it for the theme
+      if (!file_exists(DRUPAL_ROOT . $js_template)) {
+        $variables['js_template'] = '/' . $js_template;
+      }
+    }
+  }
+}
