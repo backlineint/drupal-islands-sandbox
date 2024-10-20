@@ -5,24 +5,58 @@
  * Primary module hooks for Islands module.
  */
 
-function islands_preprocess(&$variables) {
-  // either theme_hook_suggestions or theme_hook_original can be used to get the theme hook.
-  // There are likely many other use cases we need to address here.
+use Drupal\Component\Serialization\Json;
+use Drupal\Core\Render\BubbleableMetadata;
 
-  $theme_registry = \Drupal::service('theme.registry');
-  // Get all theme hook suggestions.
-  $suggestions = $theme_registry->get();
+/**
+ * Implements hook_page_attachments().
+ */
+function islands_page_attachments(array &$attachments) {
+  $metadata = BubbleableMetadata::createFromRenderArray($attachments);
 
-  if (isset($variables['theme_hook_original'])) {
-    if (isset($suggestions[$variables['theme_hook_original']]['path'])) {
-      $path = $suggestions[$variables['theme_hook_original']]['path'];
-      $template = $suggestions[$variables['theme_hook_original']]['template'];
-      $js_template = $path . '/' . $template . '.js';
-      // If a matching js template exists, note it for the theme
-      if (!file_exists(DRUPAL_ROOT . $js_template)) {
-        // TODO - Try making this an import map instead...
-        $variables['js_template'] = '/' . $js_template;
+  /** @var \Drupal\Core\Extension\ThemeHandlerInterface $themeHandler */
+  $themeHandler = \Drupal::service('theme_handler');
+  $themes = $themeHandler->listInfo();
+
+  $modules = \Drupal::moduleHandler()->getModuleList();
+  $sources = array_merge($modules, $themes);
+
+  /** @var \Drupal\Core\File\FileSystemInterface $file_system */
+  $file_system = \Drupal::service('file_system');
+  $islands = [];
+
+  // Review themes and modules to find *.island.* files
+  foreach ($sources as $source) {
+    $path = $source->getPath();
+    $directory = $path . '/templates';
+    $name = $source->getName();
+    if (is_dir($directory)) {
+      $island_files = $file_system->scanDirectory($directory, '/.*\.island.*$/');
+      foreach ($island_files as $island_file) {
+        $islands[$name . '/' . $island_file->filename] = '/' . $island_file->uri;
       }
     }
   }
+
+  // Generate an import map for the islands
+  // Borrowed with kudos from https://www.drupal.org/project/importmap
+  $metadata->addAttachments([
+    'html_head' => [
+      [
+        [
+          '#tag' => 'script',
+          '#attributes' => ['type' => 'importmap'],
+          '#value' => Json::encode(
+            [
+              'imports' => $islands,
+            ]
+          ),
+          '#weight' => 0,
+        ],
+        'islands_json',
+      ],
+    ],
+  ]);
+
+  $metadata->applyTo($attachments);
 }
