@@ -19,7 +19,6 @@ final class IslandsExamplesController extends ControllerBase {
     $build['content'] = [
       '#theme' => 'is_land_theme'
     ];
-    $build['#attached']['library'][] =  'islands/is_land_autoinit';
 
     return $build;
   }

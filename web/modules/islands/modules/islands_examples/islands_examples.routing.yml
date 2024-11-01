@@ -1,7 +1,7 @@
 islands_examples.example:
-  path: '/islands-examples/example'
+  path: "/islands-examples"
   defaults:
-    _title: 'Example'
+    _title: "Islands Examples"
     _controller: '\Drupal\islands_examples\Controller\IslandsExamplesController'
   requirements:
-    _permission: 'access content'
+    _permission: "access content"

@@ -36,8 +36,8 @@ const r = class r extends HTMLElement {
           continue;
         let i = r.getParents(a);
         if (i.length === 1) {
-          let n = r.ready(a, i);
-          r.fallback[t](n, a, r.prefix);
+          let o = r.ready(a, i);
+          r.fallback[t](o, a, r.prefix);
         }
       }
     }
@@ -58,8 +58,8 @@ const r = class r extends HTMLElement {
       let a = e.getAttribute(r.attr.template);
       if (a === "replace") {
         let i = Array.from(this.childNodes);
-        for (let n of i)
-          this.removeChild(n);
+        for (let o of i)
+          this.removeChild(o);
         this.appendChild(e.content);
         break;
       } else {
@@ -94,17 +94,17 @@ l(r, "tagName", "is-land"), l(r, "prefix", "is-land--"), l(r, "attr", {
 }), l(r, "onceCache", /* @__PURE__ */ new Map()), l(r, "onReady", /* @__PURE__ */ new Map()), l(r, "fallback", {
   ":not(is-land,:defined,[defer-hydration])": (t, e, a) => {
     let i = document.createElement(a + e.localName);
-    for (let o of e.getAttributeNames())
-      i.setAttribute(o, e.getAttribute(o));
-    let n = e.shadowRoot;
-    if (!n) {
-      let o = e.querySelector(":scope > template:is([shadowrootmode], [shadowroot])");
-      if (o) {
-        let f = o.getAttribute("shadowrootmode") || o.getAttribute("shadowroot") || "closed";
-        n = e.attachShadow({ mode: f }), n.appendChild(o.content.cloneNode(!0));
+    for (let n of e.getAttributeNames())
+      i.setAttribute(n, e.getAttribute(n));
+    let o = e.shadowRoot;
+    if (!o) {
+      let n = e.querySelector(":scope > template:is([shadowrootmode], [shadowroot])");
+      if (n) {
+        let f = n.getAttribute("shadowrootmode") || n.getAttribute("shadowroot") || "closed";
+        o = e.attachShadow({ mode: f }), o.appendChild(n.content.cloneNode(!0));
       }
     }
-    return n && i.attachShadow({ mode: n.mode }).append(...n.childNodes), i.append(...e.childNodes), e.replaceWith(i), t.then(() => {
+    return o && i.attachShadow({ mode: o.mode }).append(...o.childNodes), i.append(...e.childNodes), e.replaceWith(i), t.then(() => {
       i.shadowRoot && e.shadowRoot.append(...i.shadowRoot.childNodes), e.append(...i.childNodes), i.replaceWith(e);
     });
   }
@@ -123,9 +123,9 @@ const s = class s {
   static visible(t, e) {
     if ("IntersectionObserver" in window)
       return new Promise((a) => {
-        let i = new IntersectionObserver((n) => {
-          let [o] = n;
-          o.isIntersecting && (i.unobserve(o.target), a());
+        let i = new IntersectionObserver((o) => {
+          let [n] = o;
+          n.isIntersecting && (i.unobserve(n.target), a());
         });
         i.observe(e);
       });
@@ -147,13 +147,13 @@ const s = class s {
   static interaction(t, e) {
     let a = ["click", "touchstart"];
     return t && (a = (t || "").split(",").map((i) => i.trim())), new Promise((i) => {
-      function n(o) {
+      function o(n) {
         i();
         for (let f of a)
-          e.removeEventListener(f, n);
+          e.removeEventListener(f, o);
       }
-      for (let o of a)
-        e.addEventListener(o, n, { once: !0 });
+      for (let n of a)
+        e.addEventListener(n, o, { once: !0 });
     });
   }
   static media(t) {
@@ -183,6 +183,3 @@ l(s, "map", {
 let c = s;
 "customElements" in window && (window.customElements.define(d.tagName, d), window.Island = d);
 d.ready;
-class p extends d {
-}
-customElements.get("drupal-island") || customElements.define("drupal-island", p);

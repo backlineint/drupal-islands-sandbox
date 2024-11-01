@@ -12,6 +12,10 @@ use Drupal\Core\Render\BubbleableMetadata;
  * Implements hook_page_attachments().
  */
 function islands_page_attachments(array &$attachments) {
+  // Add islands library to all pages
+  $attachments['#attached']['library'][] =  'islands/is_land_autoinit';
+
+  // Create an import map for any islands modules.
   $metadata = BubbleableMetadata::createFromRenderArray($attachments);
 
   /** @var \Drupal\Core\Extension\ThemeHandlerInterface $themeHandler */

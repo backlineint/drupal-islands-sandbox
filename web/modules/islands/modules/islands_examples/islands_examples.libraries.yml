@@ -1,0 +1,11 @@
+# Third-party library (self hosted).
+example_component:
+  js:
+    js/example-component.js: { attributes: { type: module } }
+  css:
+    theme:
+      css/example-component.css: {}
+example_styles:
+  css:
+    theme:
+      css/example-styles.css: {}

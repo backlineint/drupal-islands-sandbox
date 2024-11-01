@@ -7,7 +7,7 @@ is_land:
     url: https://github.com/11ty/is-land/blob/main/LICENSE
     gpl-compatible: true
   js:
-    js/dist/drupal-island.js: { attributes: { type: module } }
+    js/lib/is-land.js: { attributes: { type: module } }
 
 is_land_autoinit:
   remote: https://github.com/11ty/is-land

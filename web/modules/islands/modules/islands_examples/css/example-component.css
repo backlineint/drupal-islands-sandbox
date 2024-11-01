@@ -1,0 +1,10 @@
+example-component.connected {
+  display: block;
+  padding: 10px;
+  border: 2px solid rgb(20, 117, 173);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: rgb(27, 154, 228);
+  color: white;
+  font-weight: 700;
+}
