@@ -17,7 +17,15 @@ final class IslandsExamplesController extends ControllerBase {
   public function __invoke(): array {
 
     $build['content'] = [
-      '#theme' => 'is_land_theme'
+      '#theme' => 'island_theme'
+    ];
+
+    return $build;
+  }
+
+  public function vue(): array {
+    $build['content'] = [
+      '#theme' => 'island_vue_theme'
     ];
 
     return $build;

@@ -7,9 +7,11 @@
 
 function islands_examples_theme($existing, $type, $theme, $path) {
   return [
-    'is_land_theme' => [
-      'variables' => [
-      ]
+    'island_theme' => [
+      'variables' => []
+    ],
+    'island_vue_theme' => [
+      'variables' => []
     ]
   ];
 }

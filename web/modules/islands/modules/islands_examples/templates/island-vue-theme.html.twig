@@ -1,0 +1,137 @@
+{{ attach_library('islands_examples/example_component') }}
+{{ attach_library('islands_examples/example_styles') }}
+
+{# Todo - make this a library #}
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/vs.min.css"
+/>
+<script
+  src="https://cdn.jsdelivr.net/npm/@heppokofrontend/html-code-block-element/lib/html-code-block-element.common.min.js"
+  defer
+></script>
+
+<h2><code>on:visible</code></h2>
+
+<h3>Vue.js</h3>
+
+{# Todo - autoinit example #}
+
+<drupal-island on:visible>
+	<div id="vue-app">
+		Vue (using an inline script for extra init code)
+		<template data-island>
+			<button @click="count++">⬆️</button>
+			<button @click="count--">⬇️</button>
+			<span v-html="count"> 0</span>
+		</template>
+	</div>
+
+	<template data-island>
+		<script type="module">
+		import { createApp } from "https://unpkg.com/vue@3.2.36/dist/vue.esm-browser.prod.js";
+
+		createApp({
+			data: () => ({ count: 0 })
+		}).mount("#vue-app")
+		</script>
+	</template>
+</drupal-island>
+
+<code-block language="html" label="Vue.js" controls>
+  <textarea>
+<drupal-island on:visible>
+	<div id="vue-app">
+		Vue (using an inline script for extra init code)
+		<template data-island>
+			<button @click="count++">⬆️</button>
+			<button @click="count--">⬇️</button>
+			<span v-html="count"> 0</span>
+		</template>
+	</div>
+
+	<template data-island>
+		<script type="module">
+		import { createApp } from "https://unpkg.com/vue@3.2.36/dist/vue.esm-browser.prod.js";
+
+		createApp({
+			data: () => ({ count: 0 })
+		}).mount("#vue-app")
+		</script>
+	</template>
+</drupal-island>
+  </textarea>
+</code-block>
+
+<h3>petite-vue</h3>
+
+<drupal-island on:visible autoinit="petite-vue" import="https://unpkg.com/petite-vue@0.4.1/dist/petite-vue.es.js" v-scope="{ count: 0 }">
+	Petite Vue
+	<template data-island>
+		<button @click="count++">⬆️</button>
+		<button @click="count--">⬇️</button>
+		<span v-html="count">0</span>
+	</template>
+</drupal-island>
+
+{# Todo - use styling to hide before registered #}
+<code-block language="html" label="Petite Vue" controls>
+  <textarea>
+    <drupal-island on:visible autoinit="petite-vue" import="https://unpkg.com/petite-vue@0.4.1/dist/petite-vue.es.js" v-scope="{ count: 0 }">
+	Petite Vue
+	<template data-island>
+		<button @click="count++">⬆️</button>
+		<button @click="count--">⬇️</button>
+		<span v-html="count">0</span>
+	</template>
+</drupal-island>
+  </textarea>
+</code-block>
+
+<p><hr /></p>
+
+<drupal-island on:visible>
+	<div id="petite-vue-app">
+		Petite Vue (using an inline script for extra init code)
+		<template data-island>
+			<button @click="count++">⬆️</button>
+			<button @click="count--">⬇️</button>
+			<span v-html="count">0</span>
+		</template>
+	</div>
+
+	<template data-island>
+		<script type="module">
+		import { createApp } from "https://unpkg.com/petite-vue@0.4.1/dist/petite-vue.es.js";
+
+		createApp({
+			count: 100,
+		}).mount("#petite-vue-app")
+		</script>
+	</template>
+</drupal-island>
+
+<code-block language="html" label="Petite Vue" controls>
+  <textarea>
+<drupal-island on:visible>
+	<div id="petite-vue-app">
+		Petite Vue (using an inline script for extra init code)
+		<template data-island>
+			<button @click="count++">⬆️</button>
+			<button @click="count--">⬇️</button>
+			<span v-html="count">0</span>
+		</template>
+	</div>
+
+	<template data-island>
+		<script type="module">
+		import { createApp } from "https://unpkg.com/petite-vue@0.4.1/dist/petite-vue.es.js";
+
+		createApp({
+			count: 100,
+		}).mount("#petite-vue-app")
+		</script>
+	</template>
+</drupal-island>
+  </textarea>
+</code-block>

@@ -5,3 +5,10 @@ islands_examples.example:
     _controller: '\Drupal\islands_examples\Controller\IslandsExamplesController'
   requirements:
     _permission: "access content"
+islands_examples.vue:
+  path: "/islands-examples/vue"
+  defaults:
+    _title: "Islands Examples - Vue"
+    _controller: '\Drupal\islands_examples\Controller\IslandsExamplesController::vue'
+  requirements:
+    _permission: "access content"
