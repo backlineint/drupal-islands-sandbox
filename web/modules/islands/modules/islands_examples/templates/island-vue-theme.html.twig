@@ -15,7 +15,30 @@
 
 <h3>Vue.js</h3>
 
-{# Todo - autoinit example #}
+<drupal-island on:visible autoinit="petite-vue" import="https://unpkg.com/petite-vue@0.4.1/dist/petite-vue.es.js" v-scope="{ count: 0 }">
+	Petite Vue
+	<template data-island>
+		<button @click="count++">⬆️</button>
+		<button @click="count--">⬇️</button>
+		<span v-html="count">0</span>
+	</template>
+</drupal-island>
+
+<code-block language="html" label="Vue.js" controls>
+  <textarea>
+<drupal-island
+  on:visible autoinit="petite-vue"
+  import="https://unpkg.com/petite-vue@0.4.1/dist/petite-vue.es.js"
+  v-scope="{ count: 0 }">
+	Petite Vue
+	<template data-island>
+		<button @click="count++">⬆️</button>
+		<button @click="count--">⬇️</button>
+		<span v-html="count">0</span>
+	</template>
+</drupal-island>
+  </textarea>
+</code-block>
 
 <drupal-island on:visible>
 	<div id="vue-app">
