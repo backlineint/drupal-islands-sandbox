@@ -1,15 +1,34 @@
-{{ attach_library('islands_examples/example_component') }}
 {{ attach_library('islands_examples/example_styles') }}
+{{ attach_library('islands_examples/code_block') }}
 
 {# Todo - make this a library #}
-<link
+{# <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/vs.min.css"
 />
 <script
   src="https://cdn.jsdelivr.net/npm/@heppokofrontend/html-code-block-element/lib/html-code-block-element.common.min.js"
   defer
-></script>
+></script> #}
+
+<style>
+  hr {
+    margin: 2.5rem;
+  }
+</style>
+
+<ul>
+  <li><a href="/islands-examples">Overview</a></li>
+  <li><a href="/islands-examples/web-components">Web Components</a></li>
+  <li><b><a href="/islands-examples/vue">Vue</a></b></li>
+  <li>Preact</li>
+  <li>Svelte</li>
+  <li>With SDCs</li>
+  <li>With Drupal content</li>
+  <li>What about React?</li>
+</ul>
+
+<hr />
 
 <h2><code>on:visible</code></h2>
 

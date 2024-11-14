@@ -12,3 +12,10 @@ islands_examples.vue:
     _controller: '\Drupal\islands_examples\Controller\IslandsExamplesController::vue'
   requirements:
     _permission: "access content"
+islands_examples.web_components:
+  path: "/islands-examples/web-components"
+  defaults:
+    _title: "Islands Examples - Web Components"
+    _controller: '\Drupal\islands_examples\Controller\IslandsExamplesController::WebComponents'
+  requirements:
+    _permission: "access content"

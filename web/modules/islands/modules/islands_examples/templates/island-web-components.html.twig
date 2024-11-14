@@ -1,0 +1,119 @@
+{{ attach_library('islands_examples/example_component') }}
+{{ attach_library('islands_examples/example_styles') }}
+{{ attach_library('islands_examples/code_block') }}
+
+<style>
+  hr {
+    margin: 2.5rem;
+  }
+</style>
+
+<ul>
+  <li><a href="/islands-examples">Overview</a></li>
+  <li><b><a href="/islands-examples/web-components">Web Components</a></b></li>
+  <li><a href="/islands-examples/vue">Vue</a></li>
+  <li>Preact</li>
+  <li>Svelte</li>
+  <li>With SDCs</li>
+  <li>With Drupal content</li>
+  <li>What about React?</li>
+</ul>
+
+<hr />
+
+<p>Below is a basic web component. It won't be styled until js is loaded. This
+first example proves that the component will initialize without the use of
+islands.</p>
+
+<example-component>This is an example component</example-component>
+
+<code-block language="html" label="twig" controls>
+  <textarea>
+<example-component>This is an example component</example-component>
+  </textarea>
+</code-block>
+
+<hr />
+
+<p>Dotted borders below signify the drupal-island elements. They will load the example component using a variety of different behaviors.</p>
+
+{# Todo - show code snippets here #}
+<drupal-island on:visible>
+  <example-component>This component will load when visible</example-component>
+</drupal-island>
+
+<code-block language="html" label="twig" controls>
+  <textarea>
+<drupal-island on:visible>
+  <example-component>This component will load when visible</example-component>
+</drupal-island>
+  </textarea>
+</code-block>
+
+<hr />
+
+<drupal-island on:idle>
+  <example-component>This component will load after the initial page load using requestIdleCallback()</example-component>
+</drupal-island>
+
+<code-block language="html" label="twig" controls>
+  <textarea>
+<drupal-island on:idle>
+  <example-component>This component will load after the initial page load using requestIdleCallback()</example-component>
+</drupal-island>
+  </textarea>
+</code-block>
+
+<hr />
+
+<drupal-island on:interaction>
+  <example-component>This component will only load on interaction (click, touch, etc)</example-component>
+</drupal-island>
+
+<code-block language="html" label="twig" controls>
+  <textarea>
+<drupal-island on:interaction>
+  <example-component>This component will only load on interaction (click, touch, etc)</example-component>
+</drupal-island>
+  </textarea>
+</code-block>
+
+<hr />
+
+<drupal-island on:interaction>
+  This component will only load on interaction, but it leaves this pre-js markup in place.
+  <template data-island>
+    <example-component>This is an example component</example-component>
+  </template>
+</drupal-island>
+
+<code-block language="html" label="twig" controls>
+  <textarea>
+<drupal-island on:interaction>
+  This component will only load on interaction, but it leaves this pre-js markup in place.
+  <template data-island>
+    <example-component>This is an example component</example-component>
+  </template>
+</drupal-island>
+  </textarea>
+</code-block>
+
+<hr />
+
+<drupal-island on:interaction>
+  This component will only load on interaction, but replaces this pre-js markup.
+  <template data-island="replace">
+    <example-component>This is an example component</example-component>
+  </template>
+</drupal-island>
+
+<code-block language="html" label="twig" controls>
+  <textarea>
+<drupal-island on:interaction>
+  This component will only load on interaction, but replaces this pre-js markup.
+  <template data-island="replace">
+    <example-component>This is an example component</example-component>
+  </template>
+</drupal-island>
+  </textarea>
+</code-block>

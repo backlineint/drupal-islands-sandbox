@@ -9,3 +9,11 @@ example_styles:
   css:
     theme:
       css/example-styles.css: {}
+code_block:
+  js:
+    https://cdn.jsdelivr.net/npm/@heppokofrontend/html-code-block-element/lib/html-code-block-element.common.min.js:
+      { type: external, minified: true, attributes: { defer: true } }
+  css:
+    theme:
+      https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/vs.min.css:
+        { minified: true }

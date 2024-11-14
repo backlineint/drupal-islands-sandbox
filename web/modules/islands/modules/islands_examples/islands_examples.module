@@ -7,10 +7,13 @@
 
 function islands_examples_theme($existing, $type, $theme, $path) {
   return [
-    'island_theme' => [
+    'island_overview' => [
       'variables' => []
     ],
     'island_vue_theme' => [
+      'variables' => []
+    ],
+    'island_web_components' => [
       'variables' => []
     ]
   ];
