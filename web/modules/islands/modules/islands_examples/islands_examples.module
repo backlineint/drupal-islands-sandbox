@@ -15,6 +15,9 @@ function islands_examples_theme($existing, $type, $theme, $path) {
     ],
     'island_web_components' => [
       'variables' => []
+    ],
+    'islands_preact' => [
+      'variables' => []
     ]
   ];
 }

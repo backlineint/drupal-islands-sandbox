@@ -2,21 +2,11 @@
 {{ attach_library('islands_examples/example_styles') }}
 {{ attach_library('islands_examples/code_block') }}
 
-<style>
-  hr {
-    margin: 2.5rem;
-  }
-</style>
-
 <ul>
   <li><b><a href="/islands-examples">Overview</a></b></li>
+  <li><a href="/islands-examples/preact">Preact</a></li>
   <li><a href="/islands-examples/web-components">Web Components</a></li>
   <li><a href="/islands-examples/vue">Vue</a></li>
-  <li>Preact</li>
-  <li>Svelte</li>
-  <li>With SDCs</li>
-  <li>With Drupal content</li>
-  <li>What about React?</li>
 </ul>
 
 <hr />
@@ -120,43 +110,78 @@ islands.</p>
 
 <hr />
 
-<h2>Scroll down</h2>
-<hr style="height: 100vh">
+<p>Islands can also load framework components. Files in your template directory ending with .islands.js will be included in an <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap">import map</a> by referencing a key with the format <code>module_or_theme_name/filename</code>.</p>
 
-<drupal-island on:visible>
-  <example-component>This component also only loaded when visible, but it is easier to see</example-component>
+<drupal-island on:visible
+  autoinit="preact"
+  import="islands_examples/preact-component.island.js"
+  >
 </drupal-island>
 
 <code-block language="html" label="twig" controls>
   <textarea>
-<drupal-island on:visible>
-  <example-component>This component also only loaded when visible, but it is easier to see</example-component>
+<drupal-island on:visible
+  autoinit="preact"
+  import="islands_examples/preact-component.island.js"
+  >
 </drupal-island>
+  </textarea>
+</code-block>
+
+<code-block language="js" label="preact-component.island.js" controls>
+  <textarea>
+import { html, render } from "https://unpkg.com/htm/preact/index.mjs?module";
+import { useState } from "https://unpkg.com/preact@latest/hooks/dist/hooks.module.js?module";
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+    setCount((prevState) => prevState + 1);
+  };
+  const decrement = () => {
+    setCount((prevState) => prevState - 1);
+  };
+
+  return html`
+    <span>Preact Counter: </span>
+    <button onClick=${increment}>⬆️</button>
+    <span> ${count} </span>
+    <button onClick=${decrement}>⬇️</button>
+  `;
+}
+
+export default function (el) {
+  render(html`<${App} />`, el);
+}
   </textarea>
 </code-block>
 
 <hr />
 
-<drupal-island on:visible
-  autoinit="preact"
-  import="islands_examples/island-theme.island.js"
-  >
+<p>Vue components can optionally be defined directly in your twig template.</p>
+
+<drupal-island on:visible autoinit="petite-vue" import="https://unpkg.com/petite-vue@0.4.1/dist/petite-vue.es.js" v-scope="{ count: 0 }">
+	Petite Vue
+	<template data-island>
+		<button @click="count++">⬆️</button>
+		<button @click="count--">⬇️</button>
+		<span v-html="count">0</span>
+	</template>
 </drupal-island>
 
 <code-block language="html" label="twig" controls>
   <textarea>
-<drupal-island on:visible
-  autoinit="preact"
-  import="islands_examples/island-theme.island.js"
-  >
+<drupal-island
+  on:visible autoinit="petite-vue"
+  import="https://unpkg.com/petite-vue@0.4.1/dist/petite-vue.es.js"
+  v-scope="{ count: 0 }">
+	Petite Vue
+	<template data-island>
+		<button @click="count++">⬆️</button>
+		<button @click="count--">⬇️</button>
+		<span v-html="count">0</span>
+	</template>
 </drupal-island>
   </textarea>
 </code-block>
-
-{# Desired api...
-<drupal-island on:visible autoinit="preact" import="is-land-theme">
-  <template data-island>
-    {{ content.field_image}}
-  </template>
-</drupal-island>
-#}

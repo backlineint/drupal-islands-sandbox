@@ -19,3 +19,10 @@ islands_examples.web_components:
     _controller: '\Drupal\islands_examples\Controller\IslandsExamplesController::WebComponents'
   requirements:
     _permission: "access content"
+islands_examples.preact:
+  path: "/islands-examples/preact"
+  defaults:
+    _title: "Islands Examples - Preact"
+    _controller: '\Drupal\islands_examples\Controller\IslandsExamplesController::Preact'
+  requirements:
+    _permission: "access content"

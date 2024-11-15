@@ -39,4 +39,12 @@ final class IslandsExamplesController extends ControllerBase {
     return $build;
   }
 
+  public function Preact(): array {
+    $build['content'] = [
+      '#theme' => 'islands_preact'
+    ];
+
+    return $build;
+  }
+
 }

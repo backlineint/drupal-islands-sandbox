@@ -1,0 +1,61 @@
+{{ attach_library('islands_examples/example_component') }}
+{{ attach_library('islands_examples/example_styles') }}
+{{ attach_library('islands_examples/code_block') }}
+
+<ul>
+  <li><a href="/islands-examples">Overview</a></li>
+  <li><b><a href="/islands-examples/preact">Preact</a></b></li>
+  <li><a href="/islands-examples/web-components">Web Components</a></li>
+  <li><a href="/islands-examples/vue">Vue</a></li>
+</ul>
+
+<hr />
+
+<p>Islands can also load Preact components. Files in your template directory ending with .islands.js will be included in an <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap">import map</a> by referencing a key with the format <code>module_or_theme_name/filename</code>.</p>
+
+<drupal-island on:visible
+  autoinit="preact"
+  import="islands_examples/preact-component.island.js"
+  >
+</drupal-island>
+
+<code-block language="html" label="twig" controls>
+  <textarea>
+<drupal-island on:visible
+  autoinit="preact"
+  import="islands_examples/preact-component.island.js"
+  >
+</drupal-island>
+  </textarea>
+</code-block>
+
+<code-block language="js" label="preact-component.island.js" controls>
+  <textarea>
+import { html, render } from "https://unpkg.com/htm/preact/index.mjs?module";
+import { useState } from "https://unpkg.com/preact@latest/hooks/dist/hooks.module.js?module";
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+    setCount((prevState) => prevState + 1);
+  };
+  const decrement = () => {
+    setCount((prevState) => prevState - 1);
+  };
+
+  return html`
+    <span>Preact Counter: </span>
+    <button onClick=${increment}>⬆️</button>
+    <span> ${count} </span>
+    <button onClick=${decrement}>⬇️</button>
+  `;
+}
+
+export default function (el) {
+  render(html`<${App} />`, el);
+}
+  </textarea>
+</code-block>
+
+
