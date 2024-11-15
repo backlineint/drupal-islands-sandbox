@@ -1,22 +1,6 @@
 {{ attach_library('islands_examples/example_styles') }}
 {{ attach_library('islands_examples/code_block') }}
 
-{# Todo - make this a library #}
-{# <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/vs.min.css"
-/>
-<script
-  src="https://cdn.jsdelivr.net/npm/@heppokofrontend/html-code-block-element/lib/html-code-block-element.common.min.js"
-  defer
-></script> #}
-
-<style>
-  hr {
-    margin: 2.5rem;
-  }
-</style>
-
 <ul>
   <li><a href="/islands-examples">Overview</a></li>
   <li><a href="/islands-examples/preact">Preact</a></li>
@@ -106,7 +90,6 @@
 	</template>
 </drupal-island>
 
-{# Todo - use styling to hide before registered #}
 <code-block language="html" label="Petite Vue" controls>
   <textarea>
     <drupal-island on:visible autoinit="petite-vue" import="https://unpkg.com/petite-vue@0.4.1/dist/petite-vue.es.js" v-scope="{ count: 0 }">
