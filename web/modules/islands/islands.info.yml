@@ -1,5 +1,0 @@
-name: 'Islands'
-type: module
-description: 'An implementation of islands architecture for Drupal'
-package: Custom
-core_version_requirement: ^10 || ^11

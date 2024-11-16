@@ -1,7 +1,0 @@
-name: 'Islands Examples'
-type: module
-description: 'Examples using the Islands module'
-package: Custom
-core_version_requirement: ^10 || ^11
-dependencies:
-  - islands:islands

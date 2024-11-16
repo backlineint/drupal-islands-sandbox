@@ -1,7 +1,0 @@
-{
-    "name": "drupal/islands",
-    "description": "An implementation of islands architecture for Drupal",
-    "type": "drupal-module",
-    "license": "GPL-2.0-or-later",
-    "require": {}
-}
